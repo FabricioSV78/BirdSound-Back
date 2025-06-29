@@ -13,7 +13,7 @@ yamnet = hub.load("https://tfhub.dev/google/yamnet/1")
 
 # Lista de clases 
 CLASES = ["Ardea Alba", "Azara Sspinetail", "Black Facedantbird", "Bubulcus ibis", "Butorides striata", "Grey Breastedwoodwren", 
-          "Housewren", "Identityunknown", "Southernchestnut Tailedantbird", "White Browedantbird", ]  
+          "Housewren", "Southernchestnut Tailedantbird", "White Browedantbird", ]  
 
 app = FastAPI()
 
@@ -49,7 +49,7 @@ async def predict(file: UploadFile = File(...)):
     confidence = float(preds[0][idx_pred])
 
     # Umbral de confianza
-    UMBRAL = 0.3 
+    UMBRAL = 0.5 
     if confidence < UMBRAL:
         clase_predicha = "Desconocido"
     else:
